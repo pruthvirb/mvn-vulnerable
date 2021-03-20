@@ -34,7 +34,7 @@ steps:
     artifactoryService: 'artifactory-gaja'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
-    allowFailBuild: true
+    allowFailBuild: false
 - task: ArtifactoryBuildPromotion@1
   inputs:
     artifactoryService: 'artifactory-gaja'
@@ -52,4 +52,4 @@ steps:
     artifactoryService: 'artifactory-gaja'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
-    allowFailBuild: true
+    allowFailBuild: false
