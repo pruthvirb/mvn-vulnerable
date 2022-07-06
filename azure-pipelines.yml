@@ -10,6 +10,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: JFrogToolsInstaller@1
+  inputs:
+    artifactoryConnection: 'hts2'
+    cliInstallationRepo: 'extractors'
+    installExtractors: true
+    extractorsInstallationRepo: 'extractors'
 - task: JFrogMaven@1
   inputs:
     mavenPomFile: 'pom.xml'
