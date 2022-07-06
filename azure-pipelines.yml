@@ -13,7 +13,7 @@ steps:
 - task: JFrogToolsInstaller@1
   inputs:
     artifactoryConnection: 'hts2'
-    cliInstallationRepo: 'extractors'
+    cliInstallationRepo: 'jf-cli-remote'
     installExtractors: true
     extractorsInstallationRepo: 'extractors'
 - task: JFrogMaven@1
