@@ -33,7 +33,7 @@ steps:
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
-    projectKey: 'DevOps'
+    projectKey: 'devops'
     includeEnvVars: true
 - task: JFrogPublishBuildInfo@1
   inputs:
