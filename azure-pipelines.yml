@@ -10,9 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: JfrogCliV2@1
-  inputs:
-    jfrogPlatformConnection: 'jfrog-platform'
 - task: JFrogMaven@1
   inputs:
     mavenPomFile: 'pom.xml'
