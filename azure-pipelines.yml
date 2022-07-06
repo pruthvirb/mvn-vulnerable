@@ -20,4 +20,32 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-
+- task: JFrogMaven@1
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'install'
+    artifactoryResolverService: 'hts2'
+    targetResolveReleaseRepo: 'hari-libs-release'
+    targetResolveSnapshotRepo: 'hari-libs-snapshot'
+    artifactoryDeployService: 'hts2'
+    targetDeployReleaseRepo: 'hari-libs-release-local'
+    targetDeploySnapshotRepo: 'hari-libs-snapshot-local'
+    collectBuildInfo: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    projectKey: 'DevOps'
+    includeEnvVars: true
+- task: JFrogPublishBuildInfo@1
+  inputs:
+    artifactoryConnection: 'hts2'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    projectKey: 'DevOps'
+- task: JFrogBuildScan@1
+  inputs:
+    xrayConnection: 'hts2-xray'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    projectKey: 'DevOps'
+    allowFailBuild: true
+    vuln: true
