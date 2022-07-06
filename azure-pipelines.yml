@@ -23,7 +23,7 @@ steps:
 - task: JfrogCliV2@1
   inputs:
     jfrogPlatformConnection: 'jfrog-platform'
-    command: 'jf mvnc --server-id-resolve=aws --server-id-deploy=aws --repo-deploy-releases=hari-libs-release-local  --repo-deploy-snapshots=hari-libs-snapshot-local  --repo-resolve-releases=hari-libs-release  --repo-resolve-snapshots=hari-libs-snapshot'
+    command: 'jf mvnc --server-id-resolve=hts2 --server-id-deploy=hts2 --repo-deploy-releases=hari-libs-release-local  --repo-deploy-snapshots=hari-libs-snapshot-local  --repo-resolve-releases=hari-libs-release  --repo-resolve-snapshots=hari-libs-snapshot'
 - task: JFrogMaven@1
   inputs:
     mavenPomFile: 'pom.xml'
