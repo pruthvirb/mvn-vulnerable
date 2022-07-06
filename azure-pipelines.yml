@@ -23,7 +23,6 @@ steps:
 - task: JfrogCliV2@1
   inputs:
     jfrogPlatformConnection: 'jfrog-platform'
-    command: 'jf <COMMAND>'
 - task: JFrogMaven@1
   inputs:
     mavenPomFile: 'pom.xml'
