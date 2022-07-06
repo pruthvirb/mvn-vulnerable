@@ -13,7 +13,6 @@ steps:
 - task: JfrogCliV2@1
   inputs:
     jfrogPlatformConnection: 'jfrog-platform'
-    command: 'jf c show'
 - task: JFrogMaven@1
   inputs:
     mavenPomFile: 'pom.xml'
