@@ -29,7 +29,7 @@ steps:
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
-    includeEnvVars: true
+    projectKey: 'devops'
 - task: JFrogPublishBuildInfo@1
   inputs:
     artifactoryConnection: 'hts2'
