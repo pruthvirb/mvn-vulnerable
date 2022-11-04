@@ -26,3 +26,21 @@ steps:
     cliInstallationRepo: 'jfrog-cli-v2-new'
     installExtractors: true
     extractorsInstallationRepo: 'jfrog-extractors-remote'
+- task: JFrogMaven@1
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'install'
+    artifactoryResolverService: 'hts2-new'
+    targetResolveReleaseRepo: 'azure-libs-release'
+    targetResolveSnapshotRepo: 'azure-libs-snapshot'
+    artifactoryDeployService: 'hts2-new'
+    targetDeployReleaseRepo: 'azure-libs-release-local'
+    targetDeploySnapshotRepo: 'azure-libs-snapshot-local'
+    collectBuildInfo: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+- task: JFrogPublishBuildInfo@1
+  inputs:
+    artifactoryConnection: 'hts2-new'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
