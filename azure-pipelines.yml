@@ -25,7 +25,7 @@ steps:
     artifactoryConnection: 'hts2-new'
     cliInstallationRepo: 'jfrog-cli-v2-new'
     installExtractors: true
-    extractorsInstallationRepo: 'jfrog-extractors-remote'
+    extractorsInstallationRepo: 'extractors'
 - task: JFrogMaven@1
   inputs:
     mavenPomFile: 'pom.xml'
