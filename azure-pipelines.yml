@@ -14,8 +14,6 @@ steps:
   inputs:
     artifactoryConnection: 'hts2-new'
     cliInstallationRepo: 'jfrog-cli-v2-new'
-    installCustomVersion: true
-    cliVersion: '2.20.0'
     installExtractors: true
     extractorsInstallationRepo: 'extractors'
 - task: JFrogMaven@1
