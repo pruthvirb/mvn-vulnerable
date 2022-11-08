@@ -6,9 +6,6 @@
 trigger:
 - master
 
-pool:
-  vmImage: ubuntu-latest
-
 steps:
 - task: JFrogToolsInstaller@1
   inputs:
