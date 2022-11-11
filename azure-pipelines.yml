@@ -16,9 +16,13 @@ steps:
     installExtractors: true
     extractorsInstallationRepo: 'extractors'
 - task: PowerShell@2
+  displayName: Set MAVEN_OPTS
   inputs:
-    targetType: 'inline'
-    script: '$env:MAVEN_OPTS="-Xms1024m -Xmx4096m -client -XX:MaxPermSize=500m  -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none"''write-host "before: $($env:MAVEN_OPTS)"'
+    targetType: inline
+    script: >-
+      $env:MAVEN_OPTS="-Xms1024m -Xmx4096m -client -XX:MaxPermSize=500m  -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none"
+
+      write-host "before: $($env:MAVEN_OPTS)"
 - task: JFrogMaven@1
   inputs:
     mavenPomFile: 'pom.xml'
