@@ -27,6 +27,8 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
@@ -38,7 +40,7 @@ jobs:
     - run: |
        jf mvn-config --global --server-id-resolve=hts2 --repo-resolve-releases=githactions-libs-release --repo-resolve-snapshots=githactions-libs-snapshot --repo-deploy-releases=githactions-libs-release-local --repo-deploy-snapshots=githactions-libs-snapshot-local
     - name: Publish and promote in saas instance
-    - run: |
+      run: |
         jf mvn clean install
       env:
           JF_ARTIFACTORY_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS }}
