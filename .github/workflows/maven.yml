@@ -47,7 +47,7 @@ jobs:
         jf rt bp test
     - name: Xray scan
       run: |
-        jf rt bs
+        jf rt bs --fail=false
       env:
           JF_ARTIFACTORY_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS }}
        
