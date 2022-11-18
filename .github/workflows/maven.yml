@@ -42,7 +42,7 @@ jobs:
     - name: maven-build
       run: |
         jf mvn clean install
-    - name: Publish to saas instance
+    - name: Publish to saas instances
       run: |     
         jf rt bp test
     - name: Xray scan
