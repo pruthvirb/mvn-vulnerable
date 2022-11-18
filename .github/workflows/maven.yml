@@ -41,7 +41,9 @@ jobs:
        jf mvn-config --global --server-id-resolve=hts2 --repo-resolve-releases=githactions-libs-release --repo-resolve-snapshots=githactions-libs-snapshot --repo-deploy-releases=githactions-libs-release-local --repo-deploy-snapshots=githactions-libs-snapshot-local
     - name: Publish and promote in saas instance
       run: |
-        jf mvn clean install
+        jf mvn clean install --build-name test --build-number 2.0.0
+        jf rt bp --build-name test --build-number 2.0.0
+        jf rt bs test 2.0.0
       env:
           JF_ARTIFACTORY_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS }}
        
