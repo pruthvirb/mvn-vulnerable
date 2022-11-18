@@ -42,7 +42,7 @@ jobs:
     - name: Publish and promote in saas instance
       run: |
         jf mvn clean install --build-name test --build-number 3.0.0
-        jf rt bp --build-name test 3.0.0
+        jf rt bp test 3.0.0
         jf rt bs test 3.0.0
       env:
           JF_ARTIFACTORY_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS }}
