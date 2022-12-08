@@ -26,15 +26,17 @@ steps:
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'install'
+    options: 'MAVEN_OPTS="-Xms1024m -Xmx4096m -client -XX:MaxPermSize=500m  -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none"'
     artifactoryResolverService: 'hts2-new'
-    targetResolveReleaseRepo: 'azure-libs-release'
-    targetResolveSnapshotRepo: 'azure-libs-snapshot'
+    targetResolveReleaseRepo: 'ad-libs-release'
+    targetResolveSnapshotRepo: 'ad-libs-snapshot'
     artifactoryDeployService: 'hts2-new'
-    targetDeployReleaseRepo: 'azure-libs-release-local'
-    targetDeploySnapshotRepo: 'azure-libs-snapshot-local'
+    targetDeployReleaseRepo: 'ad-libs-release-local'
+    targetDeploySnapshotRepo: 'ad-libs-snapshot-local'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
+    includeEnvVars: true
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
