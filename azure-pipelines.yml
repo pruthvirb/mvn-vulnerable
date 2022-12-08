@@ -26,7 +26,7 @@ steps:
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'install'
-    options: '-DXms=1024m -DXmx=4096m -client -XX:MaxPermSize=500m  -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none'
+    options: -D'Xms=1024m -Xmx=4096m -client -XX:MaxPermSize=500m  -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none'
     artifactoryResolverService: 'hts2-new'
     targetResolveReleaseRepo: 'ad-libs-release'
     targetResolveSnapshotRepo: 'ad-libs-snapshot'
