@@ -28,11 +28,11 @@ steps:
     goals: 'install'
     options: -DXms=1024m -DXmx=4096m -DMaxPermSize=500m
     artifactoryResolverService: 'hts2-new'
-    targetResolveReleaseRepo: 'ad-libs-release'
-    targetResolveSnapshotRepo: 'ad-libs-snapshot'
+    targetResolveReleaseRepo: 'mvn-libs-release'
+    targetResolveSnapshotRepo: 'mvn-libs-snapshot'
     artifactoryDeployService: 'hts2-new'
-    targetDeployReleaseRepo: 'ad-libs-release-local'
-    targetDeploySnapshotRepo: 'ad-libs-snapshot-local'
+    targetDeployReleaseRepo: 'mvn-libs-release-local'
+    targetDeploySnapshotRepo: 'mvn-libs-snapshot-local'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
