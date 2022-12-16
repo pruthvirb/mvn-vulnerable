@@ -28,8 +28,10 @@ steps:
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     includeEnvVars: true
+    projectKey: xray
 - task: JFrogPublishBuildInfo@1
   inputs:
     artifactoryConnection: 'hts2-new'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
+    projectKey: xray
