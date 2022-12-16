@@ -13,13 +13,6 @@ steps:
     cliInstallationRepo: 'jfrog-cli-v2-new'
     installExtractors: true
     extractorsInstallationRepo: 'extractors'
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      $env:MAVEN_OPTS="-Xms1024m -Xmx4096m -client -XX:MaxPermSize=500m  -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none"
-      
-      write-host "before: $($env:MAVEN_OPTS)"
 - task: JFrogMaven@1
   inputs:
     mavenPomFile: 'pom.xml'
@@ -35,7 +28,8 @@ steps:
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     includeEnvVars: true
-- task: PowerShell@2
+- task: JFrogPublishBuildInfo@1
   inputs:
-    targetType: 'inline'
-    script: 'write-host "$($env:MAVEN_OPTS)"'
+    artifactoryConnection: 'hts2-new'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
