@@ -23,7 +23,7 @@ updates:
 registries:
   Artifactory:
     type: npm-registry
-    url: https://hts2.jfrog.io/artifactory/api/npm/git-npm #virtual npm repo
+    url: https://hts2.jfrog.io/artifactory/api/npm/githactions-libs-release/
     token: ${{secrets.JF_AUTH_TOKEN}}
     # username: ${{secrets.MY_ARTIFACTORY_USER}}
     # password: ${{secrets.MY_ARTIFACTORY_PASSWORD}}
