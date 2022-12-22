@@ -11,7 +11,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: 'npm'
+  - package-ecosystem: 'maven'
     directory: '/' # Location of package manifests
     target-branch: 'add-scope'
     schedule:
@@ -22,7 +22,7 @@ updates:
 
 registries:
   Artifactory:
-    type: npm-registry
+    type: maven-registry
     url: https://hts2.jfrog.io/artifactory/api/npm/githactions-libs-release/
     token: ${{secrets.JF_AUTH_TOKEN}}
     # username: ${{secrets.MY_ARTIFACTORY_USER}}
