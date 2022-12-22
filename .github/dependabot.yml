@@ -22,7 +22,7 @@ updates:
 
 registries:
   Artifactory:
-    type: maven-registry
+    type: maven-repository
     url: https://hts2.jfrog.io/artifactory/api/npm/githactions-libs-release/
     token: ${{secrets.JF_AUTH_TOKEN}}
     # username: ${{secrets.MY_ARTIFACTORY_USER}}
