@@ -17,7 +17,7 @@ updates:
     schedule:
       interval: 'daily'
     registries:
-      - Artifactory
+      - maven-artifactory:
 
 registries:
   maven-artifactory:
