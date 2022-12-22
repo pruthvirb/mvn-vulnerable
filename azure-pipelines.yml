@@ -6,6 +6,8 @@
 trigger:
 - master
 
+pool:
+  vmImage: windows
 steps:
 - task: JFrogToolsInstaller@1
   inputs:
@@ -17,7 +19,7 @@ steps:
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'install'
-    options: -DXms=1024m -DXmx=4096m -DMaxPermSize=500m
+    options: '-DXms1024m' 
     artifactoryResolverService: 'hts2-new'
     targetResolveReleaseRepo: 'mvn-libs-release'
     targetResolveSnapshotRepo: 'mvn-libs-snapshot'
