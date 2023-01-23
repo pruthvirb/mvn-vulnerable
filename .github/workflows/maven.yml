@@ -41,6 +41,8 @@ jobs:
           JF_USER: ${{ secrets.JF_USER }}
           JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
     - run: |
+       jf c add --url=${{ secrets.JF_URL }} --user=${{ secrets.JF_USER }} --password=${{ secrets.JF_ACCESS_TOKEN }} --interactive=false
+       jf c show
        jf rt ping
     - run: |
        jf mvn-config --global --server-id-resolve=hts2 --repo-resolve-releases=githactions-libs-release --repo-resolve-snapshots=githactions-libs-snapshot --repo-deploy-releases=githactions-libs-release-local --repo-deploy-snapshots=githactions-libs-snapshot-local
