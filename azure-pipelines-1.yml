@@ -10,28 +10,30 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: ArtifactoryToolsInstaller@1
+- task: JFrogToolsInstaller@1
   inputs:
-    artifactoryService: 'hts2-new'
+    artifactoryConnection: 'hts2-art'
     cliInstallationRepo: 'jfrog-cli-v2-new'
     installExtractors: true
     extractorsInstallationRepo: 'extractors'
-- task: ArtifactoryMaven@2
+- task: JFrogMaven@1
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'install'
-    artifactoryResolverService: 'hts2-new'
+    artifactoryResolverService: 'hts2-art'
     targetResolveReleaseRepo: 'ad-libs-release'
     targetResolveSnapshotRepo: 'ad-libs-snapshot'
-    artifactoryDeployService: 'hts2-new'
+    artifactoryDeployService: 'hts2-art'
     targetDeployReleaseRepo: 'ad-libs-release-local'
     targetDeploySnapshotRepo: 'ad-libs-snapshot-local'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     includeEnvVars: true
-- task: ArtifactoryPublishBuildInfo@1
+    javaHomeOption: 'JDKVersion'
+- task: JFrogPublishBuildInfo@1
   inputs:
-    artifactoryService: 'hts2-new'
+    artifactoryConnection: 'hts2-art'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
+
