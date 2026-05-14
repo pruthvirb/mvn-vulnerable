@@ -9,31 +9,32 @@ trigger:
 pool:
   vmImage: windows
 steps:
-- task: JFrogToolsInstaller@1
-  inputs:
-    artifactoryConnection: 'hts2-new'
-    cliInstallationRepo: 'jfrog-cli-v2-new'
-    installExtractors: true
-    extractorsInstallationRepo: 'extractors'
+
 - task: JFrogMaven@1
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'install'
-    options: '-DXms1024m' 
-    artifactoryResolverService: 'hts2-new'
-    targetResolveReleaseRepo: 'mvn-libs-release'
-    targetResolveSnapshotRepo: 'mvn-libs-snapshot'
-    artifactoryDeployService: 'hts2-new'
-    targetDeployReleaseRepo: 'mvn-libs-release-local'
-    targetDeploySnapshotRepo: 'mvn-libs-snapshot-local'
+    artifactoryResolverService: 'hts2-arti-token'
+    targetResolveReleaseRepo: 'azuremvn-maven-remote'
+    targetResolveSnapshotRepo: 'azuremvn-maven-remote'
+    artifactoryDeployService: 'hts2-arti-token'
+    targetDeployReleaseRepo: 'azuremvn-libs-release-local'
+    targetDeploySnapshotRepo: 'azuremvn-libs-release-local'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
-    includeEnvVars: true
-    projectKey: xray
+    javaHomeOption: 'JDKVersion'
+
 - task: JFrogPublishBuildInfo@1
   inputs:
-    artifactoryConnection: 'hts2-new'
+    artifactoryConnection: 'hts2-arti-token'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
-    projectKey: xray
+
+- task: JFrogBuildScan@1
+  inputs:
+    xrayConnection: 'hts2-xray'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    allowFailBuild: false
+    vuln: true
